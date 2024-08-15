@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rosales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playwright&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: -webkit-linear-gradient(90deg, #8211bf,#3ae0d3,#ba12ac);background: linear-gradient(90deg, #8211bf,#3ae0d3,#ba12ac);
+            background-size: contain; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            transition: background-image 0.5s ease; 
+        }
+
+        .corazón {
+            height: 150px;
+            width: 150px;
+            background-color: red;
+            position: relative;
+            transform: rotate(45deg);
+            box-shadow: -20px 20px 150px #f20044;
+            display: none; 
+            animation: palpitar 0.5s linear infinite alternate;
+        }
+
+        .contenido {
+            position: fixed;
+            text-align: center;
+            display: none; 
+            font-family: 'Playwright', sans-serif; 
+            margin-top: -2%;
+        }
+
+        h1, h2 {
+            color: #CEF6B8; 
+            border-radius: black;
+        }
+
+        @keyframes palpitar {
+            0% {
+                transform: rotate(45deg) scale(1.10);
+            }
+            80% {
+                transform: rotate(45deg) scale(1.0);
+            }
+            100% {
+                transform: rotate(45deg) scale(0.8);
+            } 
+        }
+
+        .corazón::before, .corazón::after {
+            content: "";
+            position: absolute;
+            height: 150px;
+            width: 150px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .corazón::before {
+            top: -50%;
+            box-shadow: 10px 20px 150px #f20044;
+        }
+
+        .corazón::after {
+            right: 50%;
+            box-shadow: 20px 20px 150px #f20044;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: blanchedalmond;
+            background: -webkit-linear-gradient(90deg, #ffffff,#7deeff,#ffffff);background: linear-gradient(90deg, #ffffff,#7deeff,#ffffff);
+        }
+    </style>
+</head>
+<body>
+    <video id="video" src="vid2.mp4" width="550px" height="450px" controls></video>
+    <button id="mostrarCorazon">Pulsa aqui -- ♡</button>
+    <div class="corazón"></div>
+    <div class="contenido">
+        <h1>Te Amo</h1>
+        <h2>Daniel <3 </h2>
+    </div>
+
+    <script>
+        document.getElementById('mostrarCorazon').addEventListener('click', function() {
+            document.querySelector('.corazón').style.display = 'block';
+            document.querySelector('.contenido').style.display = 'block'; 
+            document.body.style.backgroundImage = 'none'; 
+            document.getElementById('video').style.display = 'none'; // Oculta el video
+            this.style.display = 'none'; 
+        });
+    </script>
+</body>
+</html>
